@@ -10,5 +10,3 @@ let server = http.createServer(function(request,response){
 server.listen(8080, function(){
     console.log('Server is Running');
 })
-
-console.log(123);console.log(123);
