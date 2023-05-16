@@ -1,6 +1,4 @@
-window.onload = function(){
-    
-}
+'use strict';   // ES5+ 문법 적용 => 엄격한 문법
 
 // TODO: 테스트할것
 function ask(question, yes, no) {
@@ -18,5 +16,4 @@ let ask_test = ask;
 //     () => alert('취소 버튼을 누르셨습니다.'),
 // )
 
-console.log('test');
 console.log('test');
