@@ -126,7 +126,7 @@ console.log(name1 === 'david' ? 'yes' : 'no');  // yes
 // 10. switch operator
 // 아래와 같은 경우 사용하면 좋음
 //  * if문 여러 개 사용해아 할 때
-//  * enum 같은 값들을 체크해야 할 때
+//  * enum 같은 값들을 체크해야 할 때 (정해진 값 검사)
 //  * 다중 타입 체크가 필요할 때
 const browser = 'IE';
 
@@ -148,12 +148,74 @@ switch (browser) {          // 결과 : go away
 // switch문 에서 break 안써주면 조건에 부합하더라도 탈출 안됨, 주의!!
 switch (browser) {          // 결과 : go away, love you, same all
     case 'IE' :
-        console.log('go away!');
-    
+        console.log('go away!');    
     case 'Chrome' :
     case 'Firefox' :
         console.log('love you!');
-
     default :
         console.log('same all!');
+}
+
+// 11. Loops (반복문)
+
+// `while` loop
+// 실행 조건 체크 후 조건이 true일 경우에
+// 그 다음 바디 코드 실행됨
+
+let i = 3;
+while (i > 0) {
+    console.log(`while : ${i}`);
+    i--;
+}
+
+// `do while` loop
+// do 안에 있는 바디 코드 실행 후
+// 조건 검사하여 반복 여부 결정
+do {
+    console.log(`do while : ${i}`);
+    i--;
+} while (i > 0);    // 이 코드가 실행될 때 i = 0 이지만 블럭을 먼저 실행하므로 반복하지 않고 1회 실행 후 종료
+
+// 코드를 먼저 실행하고 싶다면 do while, 조건을 먼저 체크하고 싶다면 while
+
+// for loop
+// for(begin; condition; step)
+// 실행순서 : begin 최초 실행, condition 검사, 내부 코드 실행, step 실행 의 반복
+for (i = 3; i > 0; i--) {
+    console.log(`for : ${i}`);
+}
+
+for (let i = 3; i > 0; i = i - 2) { // 인라인 변수 선언, for 블럭 안에서만 적용되는 지역 변수
+    console.log(`inline variable declaration for : ${i}`);
+}
+
+// nested loops => 다중 반복문
+// CPU에 부하를 줄 수 있음
+// for (let i = 0; i < 10; i++) {
+//     for (let j = 0; j < 10; j++) {
+//         console.log(`i : ${i}, j : ${j}`);
+//     }
+// }
+
+// Q1. iterate from 0 to 10 and print only even number (use continue)
+
+for (let i = 0; i <= 10; i++) {
+
+    if (i % 2 === 1) {
+        continue;
+    }
+
+    console.log(`for even : ${i}`);
+}
+
+// Q2. iterate from 0 to 10 and print number until reaching 8 (use break)
+
+for (let i = 0; i <= 10; i++) {
+
+    if (i > 8) {
+        break;
+    }
+
+    console.log(`for break : ${i}`);
+
 }
