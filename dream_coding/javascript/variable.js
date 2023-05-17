@@ -1,6 +1,6 @@
 'use strict';
 
-// 1. Variable => 변수, 변경될 수 있는 값 (mutable data type)
+// 1. Variable => 변수, 변경될 수 있는 값 (mutable data type) => RW read and write, 메모리의 값을 읽고 쓰는 것이 가능
 
 // 1-1. let (added in ES6)
 let global_name = 'David Kim';  // 파일 내부 전체 접근가능한 글로벌 스코프 (전역변수)
@@ -31,13 +31,19 @@ console.log(age);   // undefined
 
 console.log(age);   // 4, 블록스코프 안먹는것 확인됨. 블록스코프가 먹으면 이건 4가 아니어야 정상임
 
-// 2. Constants => 상수, 변경되지 않는 데이터 타입 (immutable data type)
+
+// 2. Constant => 상수, 변경되지 않는 데이터 타입 (immutable data type) R read, 메모리읽기만 가능
 //  별다른 이유가 없다면 immutable data type 으로 코드를 작성해라.
 //  - 보안성 뛰어남
 //  - 스레드 안정성 (thread safety) => 동시에 변동되는 것을 방지
 //  - Human Mistake 최소화
 const days_in_week = 7;
 const max_number = 5;
+
+// Note!
+// Data type에는 변할 수 있는 Mutable types, 변하지 않는 Immutable types 의 2 종류가 있음
+// Immutable data types : primitive types, frozen objects (i.e. object.freeze()) (원시 타입, frozen 객체)
+// Mutable data types : all objects by default are mutable in JS (모든 객체형)
 
 // 3. Variable Types => JS 데이터 타입
 // Primitive type : number, string, boolean, null, undefined, symbol
