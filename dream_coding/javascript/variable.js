@@ -113,7 +113,7 @@ console.log(`value : ${symbol1.description}, type: ${typeof symbol1}`);     // i
 // real-type object
 // constant keyword
 //  => 한번 할당한 object는 다시는 다른 object로의 할당이 불가.
-// 포인터(변수의 주소)가 가리키고 있는 값, 즉 david_kim.age 등의 `값` 은 변경 가능함
+// 레퍼런스(변수의 주소)가 가리키고 있는 값, 즉 david_kim.age 등의 `값` 은 변경 가능함
 const david_kim = {name : 'david', age : 27}
 console.log(`value : ${david_kim}, type: ${typeof david_kim}`);         // [object Object], object
 console.log(`value : ${david_kim.age}, type: ${typeof david_kim}`);     // 27, object
