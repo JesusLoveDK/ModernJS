@@ -197,11 +197,12 @@ for (let i = 3; i > 0; i = i - 2) { // 인라인 변수 선언, for 블럭 안�
 //     }
 // }
 
-// Q1. iterate from 0 to 10 and print only even number (use continue)
+// break, continue
+// Q1. iterate from 0 to 10 and print only even number (use continue) => continue는 현재 반복문
 
-for (let i = 0; i <= 10; i++) {
+for (let i = 0; i < 11; i++) {
 
-    if (i % 2 === 1) {
+    if (i % 2 !== 0) {
         continue;
     }
 
