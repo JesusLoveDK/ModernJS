@@ -189,57 +189,27 @@ const simpleMultiply = (a, b) => {
 // command : add, substract, divide, multiply, remainder
 const calculate =  function (command = null, a = null, b = null) {
 
-    // 사칙연산 결과값
-    let calResult = null;
-
-    // 사칙연산자, a값, b값 중 하나라도 넘어오지 않았을 경우 함수 미실행
-    if (command === null || a === null || b === null) {
-        console.log('파라미터 누락');
-        return;
-    }   
-
-    // a값이나 b값 중 하나라도 숫자형이 아닐 경우 함수 미실행
-    if (isNaN(a) || isNaN(b)) {
-        console.log('숫자 이외 연산 불가');
-        return;
-    }
-
-    // 잘못된 연산자일 경우 1
-    if (command !== '+' && command !== '-' && command !== '*' && command !== '/' && command !== '%') {
-        console.log('잘못된 연산자입니다.');
-        return;
-    }
-
     // 사칙연산자에 의해 계산 실행
     switch (command) {
 
         case '+':
-            calResult = a + b;
-            break;
+            return a + b;            
 
         case '-':
-            calResult = a - b;
-            break;
+            return a - b;
             
         case '*':
-            calResult = a * b;
-            break;
+            return a * b;
 
         case '/':
-            calResult = a / b;
-            break;
+            return a / b;
 
         case '%':
-            calResult = a % b;
-            break;
-
+            return a % b;
 
         default:
-            break;
+            throw Error('unknown command');
     }
-
-    return calResult;
-
 }
 
 console.log(`7 plus 3 : ${calculate('+', 7, 3)}`);                      // 10
@@ -247,5 +217,4 @@ console.log(`7 minus 3 : ${calculate('-', 7, 3)}`);                     // 4
 console.log(`7 times 3 : ${calculate('*', 7, 3)}`);                     // 21
 console.log(`7 divide 3 : ${calculate('/', 7, 3)}`);                    // 2.3333333333333335
 console.log(`7 remainder 3 : ${calculate('%', 7, 3)}`);                 // 1
-console.log(`invalid param - command : ${calculate('@', 7, 3)}`);       // undefined
-console.log(`invalid param - NaN : ${calculate('@', 'test', 3)}`);      // undefined
+console.log(`invalid param - command : ${calculate('@', 7, 3)}`);       // unknown command
