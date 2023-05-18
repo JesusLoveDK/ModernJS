@@ -105,7 +105,9 @@ console.log(`value : ${x}, type: ${typeof x}`);                 // undefined, un
 //  => 고유한 식별자, 생성되는 심볼은 변경이 불가능한 원시 값, 각각의 심볼 내부에 설정된 값이 같더라도 다른 값
 const symbol1 = Symbol('id');
 const symbol2 = Symbol('id');
+const symbol3 = symbol1;
 console.log(symbol1 === symbol2);   // false, 각각의 심볼 내부에 설정된 값이 같더라도 같지 않은 것으로 인식
+console.log(symbol1 === symbol3);   // true, 레퍼런스 간 비교
 // symbol의 값을 출력할 때는 그대로 출력하면 오류나고, .description 이용하여 string 변환해주어야 함
 console.log(`value : ${symbol1.description}, type: ${typeof symbol1}`);     // id, symbol
 
