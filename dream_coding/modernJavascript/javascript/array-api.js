@@ -39,11 +39,11 @@ const array = [1, 2, 3, 4, 5];
 // or... 원 배열의 값을 첫 인덱스부터 2개 삭제해도 됨
 
 // My
-// array.splice(0, 2);  // 배열 자체가 변하지는 않음
+// array.splice(0, 2);      // 원본 배열 자체를 변화시킴. 클립보드 잘라내기 기능과 유사하다.
 // console.log(array);
 
 // Teacher Ellie's
-const result = array.slice(2, array.length);    // 파라미터2 - 1 까지의 값 (마지막 값은 배제됨)
+const result = array.slice(2, array.length);    // 파라미터2 - 1 까지의 값 (마지막 값은 배제됨), 원본 배열 자체를 변화시키지는 않음
 
 console.log('Question 4');
 console.log(result);
@@ -67,9 +67,6 @@ new Student('D', 40, false, 66),
 new Student('E', 18, true, 88),
 ];
 
-const onlyScores = [];
-students.forEach(std => onlyScores.push(std.score));
-
 // Q5. find a student with the score 90
 {
 // My
@@ -85,7 +82,7 @@ students.forEach(std => onlyScores.push(std.score));
 
 // Teacher Ellie's
 // Array.prototype.find() API
-// 콜백 함수를 인자로 받아, 배열의 각 요소 중 조건을 만족하는 요소가 있는지 체크
+// 콜백 함수를 인자로 받아, 배열의 각 요소를 순회하며 조건을 만족하는 요소가 있는지 체크
 // 만족하는 값이 있을 경우 그 값에 해당하는 row을 리턴하고, 검색을 멈춤
 
 // const result = students.find(function (student) {  함수 표현식 형태
@@ -111,6 +108,10 @@ console.log(result);
 // console.log(enrolledStudents);
 
 // Teacher Ellie's
+// filter()
+// 콜백 함수를 인자로 받아, 배열의 각 요소를 순회하며 조건을 만족하는 요소가 있는지 체크
+// 만족하는 값이 있을 경우 그 값에 해당하는 row를 별도의 배열에 저장하고, 끝까지 순회
+// 결과 : 해당하는 값이 저장된 별도의 배열을 리턴
 const result = students.filter((student) => student.enrolled);
 
 console.log('Question 6');
@@ -123,7 +124,7 @@ console.log(result);
 {
 // Map() API
 // 배열의 요소 하나하나를 변환
-// 배열 안의 요소를 지정된 콜백 함수의 인자로 주어 호출
+// 배열 안의 요소를 지정된 콜백 함수의 인자로 호출
 // 콜백 함수의 결과는 별도의 배열에 매핑되어 반환됨
 const result = students.map((student) => student.score);
 
