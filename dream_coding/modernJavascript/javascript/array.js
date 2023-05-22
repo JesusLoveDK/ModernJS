@@ -45,9 +45,10 @@ fruits.forEach(function (fruit, idx, arr) {
 // array function을 활용하면 더욱 깔끔하게 반복문 순회 가능
 const test1 = fruits.forEach((fruit) => console.log(fruit));
 
-console.clear();
+
 // 4. 배열 요소 추가, 삭제, 복사 Addtion, Deletion, Copy
 // push : add an item to the End
+console.clear();
 fruits.push('🍍', '🍉');
 console.log(fruits);
 
@@ -69,3 +70,33 @@ console.log(fruits);
 // 하지만 배열 맨 앞에 데이터를 넣고 빼려면... 배열 맨 앞의 요소를 지우거나 추가하고, 나머지 요소들을 전~~~~부 앞이나 뒤 인덱스로 이사시켜줘야함...
 
 // splice : remove an item by index position
+// 파라미터 1 : 시작 인덱스 번호
+// 파라미터 2 : 몇개나 지울 건지 숫자로 전달, 개수 말하지 않으면 파라미터 1로 지정한 인덱스부터 모든 데이터를 삭제
+// 이후의 파라미터 :  
+fruits.splice(1, 1);
+console.log(fruits);
+
+// 2개의 배열을 합하기
+const fruits2   = ['🥥', '🍓'];
+const newFruits = fruits.concat(fruits2);
+console.log(newFruits);
+
+// 5. 배열 요소 검색 (Searching)
+console.clear();
+console.log(fruits);
+
+// - 인덱싱을 이용한 검색 indexOf()
+console.log(fruits.indexOf('🍇'));      // 0
+console.log(fruits.indexOf('🍏'));      // 1
+console.log(fruits.indexOf('🍉'));      // -1, 존재하지 않는 요소의 인덱스를 검색했을 경우 -1로 나옴
+
+// 보유여부 반환 => includes();
+console.log(fruits.includes('🍏'));     // true
+console.log(fruits.includes('🍉'));     // false
+
+// lastIndexOf, 중복되는 데이터의 마지막 인덱스를 출력
+//console.clear();
+fruits.push('🍇');                      // 마지막에 중복되는 값을 넣고
+console.log(fruits);
+console.log(fruits.indexOf('🍇'));      // 중복되는 값 중 최초로 검색되는 인덱스를 출력, 0
+console.log(fruits.lastIndexOf('🍇'));  // 중복되는 값의 마지막 인덱스를 출력, 3
