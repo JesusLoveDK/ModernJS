@@ -111,7 +111,7 @@ console.log(result);
 // filter()
 // 콜백 함수를 인자로 받아, 배열의 각 요소를 순회하며 조건을 만족하는 요소가 있는지 체크
 // 만족하는 값이 있을 경우 그 값에 해당하는 row를 별도의 배열에 저장하고, 끝까지 순회
-// 결과 : 해당하는 값이 저장된 별도의 배열을 리턴
+// 결과 : 만족하는 값에 해당하는 row들이 저장된 별도의 배열을 리턴
 const result = students.filter((student) => student.enrolled);
 
 console.log('Question 6');
