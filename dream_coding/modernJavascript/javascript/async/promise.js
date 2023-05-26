@@ -23,36 +23,74 @@ const promise = new Promise((resolve, reject) => {  // Promise는 클래스. new
 });
 
 // 2. Consumers: then, catch, finally => 생성한 promise 객체를 이용하는 법
-// promise
-//     // then((value) => {받아온 value 값으로 콜백 함수 실행...})
-//     // promise가 정상적으로 수행된다면 resolve() 함수를 통해 전달된 인자를 받아 콜백 함수로 사용하는 메서드
-//     .then((value) => {
-//         console.log(value);
-//     })
-//     // catch((error) => {받아온 error 값으로 콜백 함수 실행...})
-//     // promise가 정상 실행되지 못한다면 reject() 함수를 통해 전달된 인자를 받아 콜백 함수로 사용하는 메서드
-//     .catch((error) => {
-//         console.log(error);
-//     })
-//     // finally(() => {})
-//     // promise가 성공하든 실패하든 상관없이 마지막으로 특정 기능 수행...
-//     .finally(() => {
-//         console.log('finally');
-//     });
+promise
+    // then((value) => {받아온 value 값으로 콜백 함수 실행...})
+    // promise가 정상적으로 수행된다면 resolve() 함수를 통해 전달된 인자를 받아 콜백 함수로 사용하는 메서드
+    .then((value) => {
+        console.log(value);
+    })
+    // catch((error) => {받아온 error 값으로 콜백 함수 실행...})
+    // promise가 정상 실행되지 못한다면 reject() 함수를 통해 전달된 인자를 받아 콜백 함수로 사용하는 메서드
+    .catch((error) => {
+        console.log(error);
+    })
+    // finally(() => {})
+    // promise가 성공하든 실패하든 상관없이 마지막으로 특정 기능 수행...
+    .finally(() => {
+        console.log('finally');
+    });
 
 // 3. Promise Chaning
 const fetchNumber = new Promise((resolve, reject) => {
     setTimeout(() => resolve(1), 1000);
 });
 
+// then은 값을 전달할 수도 있고, 별도의 비동기 Promise를 전달해도 됨
+// 비동기적 코드를 묶어서 처리 가능
 fetchNumber
     .then(num => num * 2)
     .then(num => num * 3)
-    .then(new Promise((resolve, reject) => {
-        setTimeout(num  => resolve(num => {
-            return num * 10;
-        }), 1000);
-    }))
+    .then(num => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => resolve(num - 1), 1000);
+        })
+    })
     .then(num => {
         console.log(num);
+    })
+
+// 4. Promise Error Handling
+const getHen = () => 
+    new Promise((resolve, reject) => {
+        setTimeout(() => resolve('🐔'), 1000);
+    });
+
+const getEgg = hen =>
+    new Promise((resolve, reject) => {
+        setTimeout(() => resolve(`${hen} => '🥚'`), 1000);
+    });
+
+const cook = (egg) =>
+    new Promise((resolve, reject) => {
+        setTimeout(() => resolve(`${egg} => '🍳'`), 1000);
+    });
+
+getHen()
+    .then(result => {
+        console.log(result);
+        
+        return getEgg;
+    })
+    .then(getEgg => {
+        let egg = getEgg();
+
+        console.log(egg);
+
+        return cook;
+    })
+    .then(cook => {
+
+        let cook_result = cook();
+
+        console.log(cook_result);
     })
