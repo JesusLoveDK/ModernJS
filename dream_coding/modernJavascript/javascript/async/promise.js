@@ -76,21 +76,6 @@ const cook = (egg) =>
     });
 
 getHen()
-    .then(result => {
-        console.log(result);
-        
-        return getEgg;
-    })
-    .then(getEgg => {
-        let egg = getEgg();
-
-        console.log(egg);
-
-        return cook;
-    })
-    .then(cook => {
-
-        let cook_result = cook();
-
-        console.log(cook_result);
-    })
+    .then(getEgg)
+    .then(cook)
+    .then(console.log)
