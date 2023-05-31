@@ -3,9 +3,6 @@
 // userStorage 객체 생성
 const loginUser = (id, pw) => new Promise((resolve, reject) => {
 
-    console.log(id);
-    console.log(pw);
-
     setTimeout(() => {
         if (
             (id === 'david' && pw === 'jesuslove1@') ||
